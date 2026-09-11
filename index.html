@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>حجز طيران - الرئيسية</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>✈️ FlyEasy</h1>
+    <p>احجز رحلتك بسهولة</p>
+  </header>
+
+  <main class="container">
+    <form id="flightForm" class="card">
+      <h2>اختر رحلتك</h2>
+
+      <label>من:</label>
+      <select id="from" required>
+        <option value="">-- اختر المدينة --</option>
+        <option>الخرطوم</option>
+        <option>دبي</option>
+        <option>القاهرة</option>
+        <option>الرياض</option>
+        <option>الدوحة</option>
+      </select>
+
+      <label>إلى:</label>
+      <select id="to" required>
+        <option value="">-- اختر المدينة --</option>
+        <option>الخرطوم</option>
+        <option>دبي</option>
+        <option>القاهرة</option>
+        <option>الرياض</option>
+        <option>الدوحة</option>
+      </select>
+
+      <label>تاريخ المغادرة:</label>
+      <input type="date" id="date" required>
+
+      <label>عدد المسافرين:</label>
+      <input type="number" id="passengers" min="1" max="10" value="1" required>
+
+      <button type="submit">بحث عن الرحلات 🔍</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>© 2025 FlyEasy - جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>بيانات المسافر</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>✈️ FlyEasy</h1>
+    <p>أدخل بياناتك</p>
+  </header>
+
+  <main class="container">
+    <form id="passengerForm" class="card">
+      <h2>بيانات المسافر</h2>
+
+      <div id="tripInfo" class="trip-info"></div>
+
+      <label>الاسم الكامل:</label>
+      <input type="text" id="name" placeholder="مثال: أحمد محمد" required>
+
+      <label>رقم الجواز:</label>
+      <input type="text" id="passport" placeholder="مثال: P1234567" required>
+
+      <label>البريد الإلكتروني:</label>
+      <input type="email" id="email" placeholder="example@mail.com" required>
+
+      <label>رقم الهاتف:</label>
+      <input type="tel" id="phone" placeholder="+249xxxxxxxxx" required>
+
+      <label>درجة السفر:</label>
+      <select id="class" required>
+        <option value="اقتصادية">اقتصادية</option>
+        <option value="أعمال">أعمال</option>
+        <option value="أولى">أولى</option>
+      </select>
+
+      <button type="submit">تأكيد الحجز ✈️</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>© 2025 FlyEasy - جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تأكيد الحجز</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>✈️ FlyEasy</h1>
+    <p>تم الحجز بنجاح</p>
+  </header>
+
+  <main class="container">
+    <div class="card success-card">
+      <div class="checkmark">✓</div>
+      <h2>شكراً لك! تم تأكيد حجزك</h2>
+      <p>رقم الحجز: <strong id="bookingNumber"></strong></p>
+
+      <div id="summary" class="summary"></div>
+
+      <button onclick="window.location.href='index.html'">حجز رحلة جديدة 🔄</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 FlyEasy - جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #1e293b;
+}
+
+header {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: white;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+header p {
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.card {
+  background: white;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15);
+  width: 100%;
+  max-width: 480px;
+}
+
+.card h2 {
+  margin-bottom: 20px;
+  color: #0369a1;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+label {
+  display: block;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: 0.25s;
+  background: #f8fafc;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #0ea5e9;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+}
+
+button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.trip-info {
+  background: #f0f9ff;
+  border-right: 4px solid #0ea5e9;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #075985;
+}
+
+.success-card {
+  text-align: center;
+}
+
+.checkmark {
+  width: 70px;
+  height: 70px;
+  background: #10b981;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin: 0 auto 20px;
+  animation: pop 0.4s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  80% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.summary {
+  text-align: right;
+  background: #f8fafc;
+  padding: 18px;
+  border-radius: 10px;
+  margin-top: 18px;
+  border: 1px solid #e2e8f0;
+}
+
+.summary p {
+  padding: 8px 0;
+  border-bottom: 1px dashed #cbd5e1;
+  font-size: 0.95rem;
+}
+
+.summary p:last-child {
+  border-bottom: none;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #0369a1;
+  color: white;
+  font-size: 0.85rem;
+}
+// ============ الصفحة الرئيسية ============
+const flightForm = document.getElementById("flightForm");
+if (flightForm) {
+  // ضبط تاريخ اليوم كحد أدنى
+  const dateInput = document.getElementById("date");
+  dateInput.min = new Date().toISOString().split("T")[0];
+
+  flightForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+    const date = document.getElementById("date").value;
+    const passengers = document.getElementById("passengers").value;
+
+    if (from === to) {
+      alert("⚠️ لا يمكن أن تكون مدينة المغادرة والوصول متطابقتين!");
+      return;
+    }
+
+    // حفظ بيانات الرحلة
+    const trip = { from, to, date, passengers };
+    localStorage.setItem("trip", JSON.stringify(trip));
+
+    // الانتقال للصفحة التالية
+    window.location.href = "passenger.html";
+  });
+}
+
+// ============ صفحة بيانات المسافر ============
+const passengerForm = document.getElementById("passengerForm");
+if (passengerForm) {
+  const trip = JSON.parse(localStorage.getItem("trip"));
+
+  if (!trip) {
+    alert("الرجاء اختيار رحلة أولاً");
+    window.location.href = "index.html";
+  } else {
+    document.getElementById("tripInfo").innerHTML = `
+      ✈️ <strong>${trip.from}</strong> ← <strong>${trip.to}</strong><br>
+      📅 التاريخ: ${trip.date} | 👥 عدد المسافرين: ${trip.passengers}
+    `;
+  }
+
+  passengerForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const passenger = {
+      name: document.getElementById("name").value,
+      passport: document.getElementById("passport").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value,
+      class: document.getElementById("class").value,
+    };
+
+    localStorage.setItem("passenger", JSON.stringify(passenger));
+    window.location.href = "confirm.html";
+  });
+}
+
+// ============ صفحة التأكيد ============
+const summary = document.getElementById("summary");
+if (summary) {
+  const trip = JSON.parse(localStorage.getItem("trip"));
+  const passenger = JSON.parse(localStorage.getItem("passenger"));
+
+  if (!trip || !passenger) {
+    window.location.href = "index.html";
+  } else {
+    // توليد رقم حجز عشوائي
+    const bookingNum = "FL" + Math.floor(100000 + Math.random() * 900000);
+    document.getElementById("bookingNumber").textContent = bookingNum;
+
+    summary.innerHTML = `
+      <p><strong>من:</strong> ${trip.from}</p>
+      <p><strong>إلى:</strong> ${trip.to}</p>
+      <p><strong>التاريخ:</strong> ${trip.date}</p>
+      <p><strong>عدد المسافرين:</strong> ${trip.passengers}</p>
+      <hr style="margin:10px 0; border:none; border-top:1px solid #cbd5e1;">
+      <p><strong>الاسم:</strong> ${passenger.name}</p>
+      <p><strong>رقم الجواز:</strong> ${passenger.passport}</p>
+      <p><strong>البريد:</strong> ${passenger.email}</p>
+      <p><strong>الهاتف:</strong> ${passenger.phone}</p>
+      <p><strong>الدرجة:</strong> ${passenger.class}</p>
+    `;
+  }
+}
